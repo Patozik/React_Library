@@ -1,0 +1,39 @@
+h2 {
+    color: aliceblue;
+}
+
+.book {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 12px 20px;
+  text-align: left;
+  margin: 10px;
+}
+
+.book p {
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.book button {
+  margin: 2px;
+  background-color: rgb(129, 70, 240);
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.book button:hover {
+  background-color: rgb(129, 70, 200);
+}
+
+.book button.delete {
+  background-color: rgb(238, 67, 55);
+}
+
+.book button.delete:hover {
+  background-color: rgb(223, 57, 45);
+}
