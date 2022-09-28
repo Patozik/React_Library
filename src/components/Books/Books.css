@@ -2,6 +2,17 @@ h2 {
     color: aliceblue;
 }
 
+.logout {
+    margin: 2px;
+    float: right;
+    background-color: rgb(129, 70, 240);
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
 .book {
   background-color: #fff;
   border-radius: 6px;

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Select from 'react-select';
+import useAuth from "../../../hooks/useAuth";
 
 function NewBook(props) {
-
+    const [auth, setAuth] = useAuth();
     const [showForm, setShowForm] = useState();
     const [name, setName] = useState('');
     const [autor, setAutor] = useState('');
@@ -38,6 +39,11 @@ function NewBook(props) {
         setShowForm(false);
     }
 
+    const logout = (e) => {
+        e.preventDefault();
+        setAuth(false);
+    }
+
     const options = [
         { value: true, label: 'Wypożyczona' },
         { value: false, label: 'Niewypożyczona' },
@@ -63,9 +69,14 @@ function NewBook(props) {
                     />
 
                 <button onClick={() => addBook()}>Dodaj książkę</button>
+                <button onClick={() => setShowForm(false)}>Anuluj</button>
+                <button className="logout" onClick={logout}>Wyloguj</button>
             </div>
         ) : (
-            <button className="book" onClick={() => setShowForm(true)}>Nowa książka</button>
+            <div className="book">
+                <button onClick={() => setShowForm(true)}>Nowa książka</button>
+                <button className="logout" onClick={logout}>Wyloguj</button>
+            </div>
         )
     );
 }

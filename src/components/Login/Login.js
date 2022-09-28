@@ -1,10 +1,11 @@
 import { useState } from "react";
 import './Login.css';
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 
 
-export default function Login (props) {
-
+function Login (props) {
+    const [auth, setAuth] = useAuth();
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
@@ -28,7 +29,10 @@ export default function Login (props) {
             
             if(res.data.admin) {
                 setCheckAdmin(false);
-                props.isAdmin(true);
+                setAuth({
+                    login: res.data.login,
+                    admin: res.data.admin
+                });
             } else {
                 setCheckAdmin(true);
                 setPassword('');
@@ -67,3 +71,5 @@ export default function Login (props) {
         </div>
     )
 }
+
+export default Login;

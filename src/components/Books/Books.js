@@ -41,9 +41,9 @@ class Books extends React.Component {
         const books = [...this.state.books];
         //dodanie backend
         const res = await axios.post(process.env.REACT_APP_API_URL_BOOK+'add', book);
-        const newNote = res.data;
+        const newBook = res.data;
         //dodanie frontend
-        books.push(newNote);
+        books.push(newBook);
         this.setState({ books });
     }
 
@@ -91,7 +91,9 @@ class Books extends React.Component {
                             ISBN={this.state.editBook.ISBN}
                             hire={this.state.editBook.hire} 
                             onEdit={book => this.editBook(book)}/>
-                        <button onClick={() => this.toggleModal()}>Anuluj</button>
+                        <div className='book'>
+                            <button onClick={() => this.toggleModal()}>Anuluj</button>
+                        </div>
                 </Modal>
 
                 {this.state.books.map(book => (

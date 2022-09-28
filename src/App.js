@@ -1,20 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import './App.css';
 import Books from './components/Books/Books';
 import Login from './components/Login/Login';
+import AuthContext from './context/authContext';
+import { reducer, intialState } from './reducer';
 
 function App() {
-
-  const [auth, setAuth] = useState(false);
+  const [state, dispatch] = useReducer(reducer, intialState);
 
   useEffect(() => {
     document.title = 'Panel administracyjny';
   });
 
   return (
-    <div className="App">
-      {auth ? <Books /> : <Login isAdmin={(admin) => setAuth(admin)} />}
-    </div>
+    <AuthContext.Provider value={{
+      user: state.user,
+      login: (user) => dispatch({ type: 'login', user }),
+      logout: () => dispatch({ type: 'logout' }),
+    }}>
+      <div className="App">
+        {state.user ? <Books /> : <Login />}
+      </div>
+    </AuthContext.Provider>
   );
 }
 
