@@ -24,20 +24,20 @@ function NewBook(props) {
     }
 
     const addBook = () => {
-        const book = {
-            name: name,
-            autor: autor,
-            ISBN: ISBN,
-            hire: hire.value
-        }
-        props.onAdd(book);
+            const book = {
+                name: name,
+                autor: autor,
+                ISBN: ISBN,
+                hire: hire.value
+            }
+            props.onAdd(book);
 
-        setName('');
-        setAutor('');
-        setISBN('');
-        setHire('');
-        setShowForm(false);
-    }
+            setName('');
+            setAutor('');
+            setISBN('');
+            setHire('');
+            setShowForm(false);
+        }
 
     const logout = (e) => {
         e.preventDefault();
@@ -52,6 +52,7 @@ function NewBook(props) {
     return (
         showForm ? (
             <div className='book'>
+
                 <label>Tytuł</label>
                 <input type="text" value={name} onChange={changeNameHandler}></input>
 

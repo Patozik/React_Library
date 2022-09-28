@@ -22,15 +22,15 @@ export default function EditBook(props) {
     }
 
     const editBook = () => {
-        const book = {
-            id: props.id,
-            name: name,
-            autor: autor,
-            ISBN: ISBN,
-            hire: hire.value
+            const book = {
+                id: props.id,
+                name: name,
+                autor: autor,
+                ISBN: ISBN,
+                hire: hire.value
+            }
+            props.onEdit(book);
         }
-        props.onEdit(book);
-    }
 
     const options = [
         { value: true, label: 'Wypożyczona' },
@@ -39,6 +39,7 @@ export default function EditBook(props) {
 
     return (
         <div className='book'>
+            
             <label>Tytuł</label>
             <input type="text" value={name} onChange={changeNameHandler}></input>
 
